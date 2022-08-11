@@ -1,0 +1,119 @@
+.qna-page {
+    background-color: #F5F7FB;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    color: #293264;
+}
+
+.quiz-container{
+    position: absolute;
+    left: 50%;
+    top: 46.5%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.qna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem auto;
+}
+
+.qna__question{
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.qna__answers{
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-items: center;
+}
+
+.qna__answer-button{
+    width: 87px;
+    height: 20px;
+    border-radius: 7.71px;
+    border: 1px solid #4D5B9E;
+    line-height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F7FB;
+}
+
+.qna__answer-button:hover {
+    cursor: pointer;
+    color: #F5F7FB;
+    background-color: #4D5B9E;
+}
+
+.qna__answer-button--correct{
+    background-color: #94D7A2;
+    border: none;
+}
+
+.qna__answer-button--incorrect{
+    background-color: #F8BCBC;
+    border: none;
+}
+
+.qna__answer-button--disable{
+    background-color: #bfbfbf;
+    border: none;
+}
+
+.qna__summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.qna__summary-scores{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.qna__summary-button{
+    width: 105px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #4D5B9E;
+    line-height: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4D5B9E;
+    border: 1px solid #293264;
+    color: #F5F7FB;
+    font-size: .9rem;
+}
+
+.qna__summary-button:hover {
+    cursor: pointer;
+    background-color: #F5F7FB;
+    color: #4D5B9E;
+}
+
+.qna__top-shape{
+    width: 397px;
+    height: 365px;
+    left: 78%;
+}
+
+.qna__bottom-shape {
+    width: 367px;
+    height: 365px;
+    top: 63%;
+}
+
+.qna__tex {
+    font-size: 60px;
+}
