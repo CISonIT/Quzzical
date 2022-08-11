@@ -7,12 +7,36 @@ import React from "react"
 export default function App() {
   const [swapPage, setSwapPage] = React.useState(true)
 
-  function changePage(){
+  const [allQna, setAllQna] = React.useState([])
+
+  React.useEffect(() => {
+    async function getAllQna() {
+      const res = await fetch("https://opentdb.com/api.php?amount=5")
+      const data = await res.json()
+      setAllQna(data.results)
+    }
+    getAllQna()
+  }, [])
+
+// Mam zaciągnięte API, które zwraca tablice 5 obiektów
+// Teraz chce, żeby przekazać wartości pojedyńczego indeksu z tablicy do komponetu z <QuestionAndAnswersPage>
+// A w komponencie QuestionAndAnswersPage ustawić wartość (zmienna, useState) dla każdego pytania
+// Pamiętać, zeby nie wpaść w infinite loop
+// Jeżeli to się uda, to potem "bawić się" w komonencie QnACard
+// Wstępnie ak wyglądają zadania na jutro
+// potem ogarnąć funkcjonalność quziową
+
+// Zrobić szybki re-cap kursu
+
+
+
+  function initGame(){
     setSwapPage(!swapPage)
-    console.log(whatToRender)
   }
 
-  const whatToRender = swapPage ? <IntroPage handleClick={()=>changePage()} isClicked={swapPage}/> : <QuestionAndAnswersPage />
+  const whatToRender = swapPage ?
+    <IntroPage handleClick={()=>initGame()} isClicked={swapPage}/> :
+    <QuestionAndAnswersPage change={swapPage}/>
 
   return (
     <div>
