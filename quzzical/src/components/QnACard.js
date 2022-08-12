@@ -4,43 +4,50 @@ export default function QnACard(props){
     const [qnaCard, setQnaCard] = React.useState({
         question: props.question,
         correct_answer: props.correct_answer,
-        incorrect_answers: props.incorrect_answers
+        incorrect_answers: props.incorrect_answers,
+        answers: [...props.incorrect_answers, props.correct_answer]
     })
 
-    const randomArr = [];
-    const numberOfAnswers = props.incorrect_answers.length + 1;
+    //Co jest do zrobienia ?
+    /*
+    
+     - rozlosowanie odpowiedzi -> zrobione (czy aby na pewno ?)
+     - zmiana ul na zestaw formularzowy (input, label) -> type = "radio"
+     - zliczanie poprawnych odpowiedzi -> zmienny state w componencie <QuestionAndAnswersPage />, który będzie counterem
+     - możliwość ponownego rozlosowania kart quizowaych
+     - podsumowanie wyniku po kliknięciu check answers -> nowa funckja
 
-    function randomOrder(){
-        for (let i = 0; i < numberOfAnswers; i++) {
-            randomArr[i] = Math.floor(Math.random()*4) 
+    */
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
-        return randomArr 
     }
 
-    randomOrder()
+    // function handleClick(e) {
+    //     e.preventDefault();
+    //     console.log(this)
+    // }
 
     const normalize = text => text.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-
-    function handleClick(event) {
-        console.log(randomArr)
-        console.log(event.target)
-    }
 
     return (
         <div className="qna">
             <p className="qna__question">{normalize(qnaCard.question)}</p>
             <ul className="qna__answers">
                 <li className="qna__answer">
-                    <button onClick={handleClick} className="qna__answer-button">{normalize(qnaCard.incorrect_answers[0])}</button>
+                    <button className="qna__answer-button">{normalize(qnaCard.answers[0])}</button>
                 </li>
                 <li className="qna__answer">
-                    <button onClick={handleClick} className="qna__answer-button">{normalize(qnaCard.incorrect_answers[2])}</button>
+                    <button className="qna__answer-button">{normalize(qnaCard.answers[1])}</button>
                 </li>
                 <li className="qna__answer">
-                    <button onClick={handleClick} className="qna__answer-button">{normalize(qnaCard.correct_answer)}</button>
+                    <button className="qna__answer-button">{normalize(qnaCard.answers[2])}</button>
                 </li>
                 <li className="qna__answer">
-                    <button onClick={handleClick} className="qna__answer-button">{normalize(qnaCard.incorrect_answers[1])}</button>
+                    <button className="qna__answer-button">{normalize(qnaCard.answers[3])}</button>
                 </li>
             </ul>
         </div>
