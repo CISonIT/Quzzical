@@ -27,15 +27,19 @@ export default function QuestionAndAnswersPage(props){
         />
     })
 
+    //zastosować na buttonie e.preventDefault - nie odświeżać strony
+
     return (
     <div className="qna-page">
         <div className="top-shape qna__top-shape"></div>
         <div className="quiz-container">
-            {qna}
-            <div className="qna__summary">
-                  <p className="qna__summary-scores">You scored 3/5 correct answers</p>
-                  <button onClick={getAllQna} className="qna__summary-button">Check answers</button>
-            </div>
+            <form>
+                {qna}
+                <div className="qna__summary">
+                    <p className="qna__summary-scores">You scored 2/ {qna.length} correct answers</p>
+                    <button onClick={getAllQna} className="qna__summary-button">Check answers</button>
+                </div>
+            </form>
         </div>
         <div className="bottom-shape qna__bottom-shape"></div>
     </div>
